@@ -25,6 +25,7 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
   }
   const openAi = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
+    timeout: 50000
   });
   // pegar as transações do mês recebido
   const transactions = await db.transaction.findMany({

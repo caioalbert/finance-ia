@@ -20,12 +20,12 @@ export const generateAiReport = async ({ month }: GenerateAiReportSchema) => {
     throw new Error("You need a premium plan to generate AI reports");
   }
   if (!process.env.OPENAI_API_KEY) {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 50000));
     return DUMMY_REPORT;
   }
   const openAi = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    timeout: 30000,
+    timeout: 50000,
   });
   // pegar as transações do mês recebido
   const transactions = await db.transaction.findMany({
